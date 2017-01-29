@@ -1,0 +1,6 @@
+---
+# List of mods to enable, such as "rewrite", "proxy_fcgi"
+apache_mods_enabled: []
+# List of mods to disable, such as "rewrite", "proxy_fcgi"
+apache_mods_disabled: []
+  
