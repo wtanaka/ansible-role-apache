@@ -74,6 +74,16 @@
       {{ansible_distribution_version|truncate(4,true,'',0)|replace("."," ")|trim|float|int|string}}
   when: ansible_distribution_major_version is not defined or not ansible_distribution_major_version
 
+- name: Edit /etc/yum.repos.d/CentOS-Base.repo for EOL CentOS 5
+  sudo: yes
+  raw: >
+    grep RPM-GPG-KEY-CentOS-5 /etc/yum.repos.d/CentOS-Base.repo
+    && sed -i
+    -e 's/#baseurl=http:\/\/mirror.centos.org\/centos\/.releasever/baseurl=http:\/\/vault.centos.org\/5.11/'
+    -e 's/^mirrorlist/#mirrorlist/'
+    /etc/yum.repos.d/CentOS-Base.repo
+    || echo "...skipping"
+
 - name: check for wget
   raw: "> /dev/null command -v wget"
   register: wget_result
