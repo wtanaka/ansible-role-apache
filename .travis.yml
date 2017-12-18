@@ -11,7 +11,7 @@ script:
 - >
   wget -O- bit.ly/ansibletest | env
   DOCKER_IMAGES="centos:6 centos:7 ubuntu:14.04
-  fedora:21 fedora:22 fedora:23 fedora:24 debian:7 debian:stretch"
+  fedora:22 fedora:23 fedora:24 fedora:27 debian:7 debian:stretch"
   ANSIBLE_VERSIONS="1.6.1 1.9.2 2.1.0.0"
   sh
 after_failure:
